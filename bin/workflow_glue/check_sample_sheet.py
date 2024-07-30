@@ -102,16 +102,16 @@ def main(args):
 
     # check barcodes are correct format
     for barcode in barcodes:
-        if not re.match(r'^barcode\d\d+$', barcode):
+        if not re.match(r'^[^_/]+$', barcode):
             sys.stdout.write("values in 'barcode' column are incorrect format")
             sys.exit()
 
     # check barcodes are all the same length
-    first_length = len(barcodes[0])
-    for barcode in barcodes[1:]:
-        if len(barcode) != first_length:
-            sys.stdout.write("values in 'barcode' column are different lengths")
-            sys.exit()
+    #first_length = len(barcodes[0])
+    #for barcode in barcodes[1:]:
+    #    if len(barcode) != first_length:
+    #        sys.stdout.write("values in 'barcode' column are different lengths")
+    #        sys.exit()
 
     # check barcode and alias values are unique
     if len(barcodes) > len(set(barcodes)):
