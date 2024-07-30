@@ -326,8 +326,7 @@ workflow POREC {
         if (params.pairs || params.mcool || params.hi_c) {
             (digest_ch
                 .cross(
-                    ch_annotated_monomers
-                    .ns_bam
+                    cs_bam_chunks
                     .map(i -> [i[0].cutter, i[0], i[1]]) // [key, meta, bam]
                 )
                 .map(i -> [
