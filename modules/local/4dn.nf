@@ -12,7 +12,7 @@ process to_pairs_file {
         tuple val(meta), path("fasta.fai"), path("${meta.alias}.pairs.gz"), emit: "pairs"
         tuple val(meta), path("${meta.alias}.stats.txt"), emit: "stats"
     shell:
-        def args = task.ext.args ?: "--drop-sam --drop-seq --expand --add-pair-index --add-columns mapq,pos5,pos3,cigar,read_len,matched_bp,algn_ref_span,algn_read_span,dist_to_5,dist_to_3,mismatches"
+        def args = task.ext.args ?: "--drop-sam --drop-seq --expand --add-pair-index --add-columns XC,HP,mapq,pos5,pos3,cigar,read_len,matched_bp,algn_ref_span,algn_read_span,dist_to_5,dist_to_3,mismatches"
     """
     pairtools parse2  \
     --output-stats "${meta.alias}.stats.txt" \
